@@ -13,7 +13,7 @@ public class CoinSpawner : MonoBehaviour
     [SerializeField] private Transform _smallCoinTransform;
     
     [SerializeField][Range(80, 150)] private int _maxCountAllCoins;
-    [SerializeField][Range(60, 250)] private int distance;
+    [SerializeField][Range(65, 250)] private int distance;
 
     private List<GameObject> _bigCoinList = new List<GameObject>();
     private List<GameObject> _smallCoinList = new List<GameObject>();
@@ -37,11 +37,21 @@ public class CoinSpawner : MonoBehaviour
     {
         if (_countCoins <= _maxCountBigCoins)
         {
-            _bigCoinList.Add(Instantiate(_bigCoin, ApproveDistanceBigCoin(_bigCoinList), Quaternion.identity, _bigCoinTransform));
+            _bigCoinList.Add(Instantiate(
+                _bigCoin, 
+                ApproveDistanceBigCoin(_bigCoinList), 
+                Quaternion.identity, 
+                _bigCoinTransform)
+            );
         }
         else
         {
-            _smallCoinList.Add(Instantiate(_smallCoin, ApproveDistanceSmallCoin(_bigCoinList, _smallCoinList), Quaternion.identity, _smallCoinTransform));
+            _smallCoinList.Add(Instantiate(
+                _smallCoin, 
+                ApproveDistanceSmallCoin(_bigCoinList, _smallCoinList), 
+                Quaternion.identity, 
+                _smallCoinTransform)
+            );
         }
     }
 
@@ -67,24 +77,15 @@ public class CoinSpawner : MonoBehaviour
     {
         const int distanceBetweenCoins = 7; //Увеличение дистанции без увеличения радиуса спавна ломает Unity
         
-        _spawnPoint = Random.insideUnitCircle * distance;
+        _spawnPoint = ApproveDistanceBigCoin(bigCoinList);
         
-        for (int counterBigCoin = 0; counterBigCoin < bigCoinList.Count; counterBigCoin++)
+        for (int counterSmallCoin = 0; counterSmallCoin < smallCoinList.Count; counterSmallCoin++)
         {
-            if (Vector3.Distance(_spawnPoint, bigCoinList[counterBigCoin].transform.position) <= distanceBetweenCoins)
+            if (Vector3.Distance(_spawnPoint, smallCoinList[counterSmallCoin].transform.position) <= distanceBetweenCoins)
             {
-                _spawnPoint = Random.insideUnitCircle * distance;
-                counterBigCoin = 0;
-            }
+                _spawnPoint = ApproveDistanceBigCoin(bigCoinList);
 
-            for (int counterSmallCoin = 0; counterSmallCoin < smallCoinList.Count; counterSmallCoin++)
-            {
-                if (Vector3.Distance(_spawnPoint, smallCoinList[counterSmallCoin].transform.position) <= distanceBetweenCoins)
-                {
-                    _spawnPoint = Random.insideUnitCircle * distance;
-                    counterBigCoin = 0;
-                    counterSmallCoin = 0;
-                }
+                counterSmallCoin = 0;
             }
         }
         
