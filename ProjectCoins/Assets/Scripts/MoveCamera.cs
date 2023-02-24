@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class MoveCamera : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private Transform player;
+    
     void Start()
     {
-        
+        player = GameObject.FindWithTag("Player").transform;
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    void LateUpdate()
     {
-        
+        Vector3 temp = transform.position;
+        temp.x = player.transform.position.x;
+        temp.y = player.transform.position.y;
+
+        transform.position = temp;
     }
 }
