@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8523289791822715406}
   - component: {fileID: 1147363943210097468}
   - component: {fileID: 1609913247233575232}
-  - component: {fileID: 4322331657427668543}
+  - component: {fileID: 8974426131308258122}
   m_Layer: 0
   m_Name: BigCoin
   m_TagString: BigCoin
@@ -92,7 +92,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2.3
---- !u!114 &4322331657427668543
+--- !u!114 &8974426131308258122
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

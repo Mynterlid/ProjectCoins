@@ -11,7 +11,7 @@ public class MoveCamera : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player").transform;
     }
-    
+
     void LateUpdate()
     {
         Vector3 temp = transform.position;

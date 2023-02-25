@@ -7,13 +7,10 @@ public class Player : MonoBehaviour
 {
     [SerializeField]private float _speed;
     
-    private Rigidbody2D _playerRigidbody2D;
     private SpriteRenderer _playerRenderer;
-    
     
     private void Start()
     {
-        _playerRigidbody2D = gameObject.GetComponent<Rigidbody2D>();
         _playerRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
     
