@@ -20,17 +20,27 @@ public class CoinSpawner : MonoBehaviour
     private int _maxCountBigCoins;
     private int _maxCountSmallCoins;
     private Vector3 _spawnPoint;
-    
+    [SerializeField] 
     void Start()
     {
-        //Стоит создать отдельный метод для более четкой рандомизации
-        _maxCountBigCoins = _maxCountAllCoins - _minCountBigCoins;
-        _maxCountSmallCoins = _maxCountAllCoins - _minCountSmallCoins;
+        CounterMaxCoins();
         
         for (int _countCoins = 1; _countCoins <= _maxCountAllCoins; _countCoins++)
         {
             SpawnCoins(_countCoins);
         }
+    }
+
+    private void CounterMaxCoins()
+    {
+        _maxCountBigCoins = _maxCountAllCoins - (_minCountBigCoins +
+                                                     (
+                                                     _maxCountAllCoins > 80 
+                                                     ? Random.Range(0, _maxCountAllCoins - (_minCountBigCoins+_minCountSmallCoins)) 
+                                                     : 0
+                                                     )
+                                                 );
+        _maxCountSmallCoins = _maxCountAllCoins - _maxCountBigCoins;
     }
 
     private void SpawnCoins(int _countCoins)
