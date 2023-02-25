@@ -11,6 +11,7 @@ public class BigCoin : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E))
             {
+                ScoreManager.Instance.AddScore(2);
                 Destroy(gameObject);
             }
         }

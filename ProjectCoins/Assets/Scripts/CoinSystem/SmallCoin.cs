@@ -8,6 +8,7 @@ public class SmallCoin : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            ScoreManager.Instance.AddScore(1);
             Destroy(gameObject);
         }
     }

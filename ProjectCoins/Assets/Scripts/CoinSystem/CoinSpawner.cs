@@ -13,7 +13,7 @@ public class CoinSpawner : MonoBehaviour
     [SerializeField] private Transform _smallCoinTransform;
     
     [SerializeField][Range(80, 150)] private int _maxCountAllCoins;
-    [SerializeField][Range(65, 250)] private int distance;
+    [SerializeField][Range(75, 300)] private int distance;
 
     private List<GameObject> _bigCoinList = new List<GameObject>();
     private List<GameObject> _smallCoinList = new List<GameObject>();
