@@ -29,7 +29,6 @@ public class ScoreManager : MonoBehaviour
 
     private void ClearScore()
     {
-        this._counterScore = 0;
         _scoreText.text = this._counterScore.ToString();
     }
 

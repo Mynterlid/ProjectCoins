@@ -189,7 +189,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &244031131
 GameObject:
@@ -1538,6 +1538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ce4283f37f3de4881f2dad1d832a4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _ButtonE: {fileID: 1608004748}
 --- !u!4 &704672449
 Transform:
   m_ObjectHideFlags: 0
@@ -1551,7 +1552,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1039996357
 GameObject:
@@ -1856,7 +1857,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1608004749
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1959,7 +1960,7 @@ Transform:
   m_Children:
   - {fileID: 340181852}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2068925051
 GameObject:
