@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -28,26 +29,16 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
         {
             int middleWidthScreen = Screen.width / 2;
-            int middleHeightScreen = Screen.height / 2;
-            
+
             if (Input.mousePosition.x <= middleWidthScreen)
             {
-                transform.Translate(Vector2.left * (_speed * Time.deltaTime));
+                transform.position = Vector2.Lerp(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition),  Time.deltaTime);
                 _playerRenderer.flipX = true;
             }
             else if (Input.mousePosition.x > middleWidthScreen)
             {
-                transform.Translate(Vector2.right * (_speed * Time.deltaTime));
+                transform.position = Vector2.Lerp(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition),  Time.deltaTime);
                 _playerRenderer.flipX = false;
-            }
-
-            if (Input.mousePosition.y <= middleHeightScreen)
-            {
-                transform.Translate(Vector2.down * (_speed * Time.deltaTime));
-            }
-            else if (Input.mousePosition.y > middleHeightScreen)
-            {
-                transform.Translate(Vector2.up * (_speed * Time.deltaTime));
             }
         }
         else
