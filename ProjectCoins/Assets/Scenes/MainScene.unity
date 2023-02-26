@@ -1543,9 +1543,9 @@ MonoBehaviour:
   _smallCoin: {fileID: 652136626444494218, guid: 496ac0951286d2f40bf702636e5b899b, type: 3}
   _smallCoinTransform: {fileID: 2105025772}
   _maxCountAllCoins: 150
-  distance: 300
-  _distanceBetweenCoins: 6
-  _distanceToBarriers: 3.5
+  distance: 100
+  _distanceBetweenCoins: 4
+  _distanceToBarriers: 1.5
 --- !u!4 &1039996359
 Transform:
   m_ObjectHideFlags: 0

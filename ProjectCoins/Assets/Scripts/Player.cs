@@ -8,10 +8,14 @@ public class Player : MonoBehaviour
     [SerializeField]private float _speed;
     
     private SpriteRenderer _playerRenderer;
+    private int _widthScreen;
+    private int _heightScreen;
     
     private void Start()
     {
         _playerRenderer = gameObject.GetComponent<SpriteRenderer>();
+        
+
     }
     
     private void FixedUpdate()
@@ -21,23 +25,51 @@ public class Player : MonoBehaviour
 
     private void MovePlayer()
     {
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
         {
-            transform.Translate(Vector2.up * (_speed * Time.deltaTime));
+            int middleWidthScreen = Screen.width / 2;
+            int middleHeightScreen = Screen.height / 2;
+            
+            if (Input.mousePosition.x <= middleWidthScreen)
+            {
+                transform.Translate(Vector2.left * (_speed * Time.deltaTime));
+                _playerRenderer.flipX = true;
+            }
+            else if (Input.mousePosition.x > middleWidthScreen)
+            {
+                transform.Translate(Vector2.right * (_speed * Time.deltaTime));
+                _playerRenderer.flipX = false;
+            }
+
+            if (Input.mousePosition.y <= middleHeightScreen)
+            {
+                transform.Translate(Vector2.down * (_speed * Time.deltaTime));
+            }
+            else if (Input.mousePosition.y > middleHeightScreen)
+            {
+                transform.Translate(Vector2.up * (_speed * Time.deltaTime));
+            }
         }
-        if (Input.GetKey(KeyCode.A))
+        else
         {
-            transform.Translate(Vector2.left * (_speed * Time.deltaTime));
-            _playerRenderer.flipX = true;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            transform.Translate(Vector2.down * (_speed * Time.deltaTime));
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.Translate(Vector2.right * (_speed * Time.deltaTime));
-            _playerRenderer.flipX = false;
+            if (Input.GetKey(KeyCode.W))
+            {
+                transform.Translate(Vector2.up * (_speed * Time.deltaTime));
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                transform.Translate(Vector2.left * (_speed * Time.deltaTime));
+                _playerRenderer.flipX = true;
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                transform.Translate(Vector2.down * (_speed * Time.deltaTime));
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                transform.Translate(Vector2.right * (_speed * Time.deltaTime));
+                _playerRenderer.flipX = false;
+            }
         }
     }
 }
