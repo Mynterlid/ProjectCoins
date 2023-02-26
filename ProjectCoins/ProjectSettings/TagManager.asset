@@ -6,6 +6,7 @@ TagManager:
   tags:
   - BigCoin
   - SmallCoin
+  - Barriers
   layers:
   - Default
   - TransparentFX

@@ -77,13 +77,7 @@ public class CoinSpawner : MonoBehaviour
         for (int i = 0; i < coinList.Count; i++)
         {
             if (Vector3.Distance(_spawnPoint, coinList[i].transform.position) <= distanceBetweenCoins 
-                && CheckBarriersDistance(i, coinList))
-            {
-                _spawnPoint = Random.insideUnitCircle * distance;
-                i = 0;
-            }
-
-            if ()
+                )
             {
                 _spawnPoint = Random.insideUnitCircle * distance;
                 i = 0;
@@ -122,6 +116,8 @@ public class CoinSpawner : MonoBehaviour
                     GameObject.FindGameObjectWithTag("Barriers").GetComponent<Collider2D>()).distance <= distanceBarricadeCoin
             )
             {
+                Debug.Log(bigCoinList[i].GetComponent<Collider2D>().Distance(
+                    GameObject.FindGameObjectWithTag("Barriers").GetComponent<Collider2D>()).distance);
                 return true;
             }
             else
