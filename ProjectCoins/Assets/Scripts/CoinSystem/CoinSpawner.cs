@@ -15,119 +15,79 @@ public class CoinSpawner : MonoBehaviour
     [SerializeField] private Transform _smallCoinTransform;
     
     [SerializeField][Range(80, 150)] private int _maxCountAllCoins;
-    [SerializeField][Range(75, 300)] private int distance;
-
-    private List<GameObject> _bigCoinList = new List<GameObject>();
-    private List<GameObject> _smallCoinList = new List<GameObject>();
-
-    private int _maxCountBigCoins;
-    //private int _maxCountSmallCoins;
-    private Vector3 _spawnPoint;
+    [SerializeField][Range(100, 300)] private int distance;
+    [SerializeField][Range(4.0f, 6.0f)] private float _distanceBetweenCoins;
+    [SerializeField][Range(1.5f, 3.5f)] private float _distanceToBarriers;
     
+    private int _maxCountBigCoins;
+    private int _maxCountSmallCoins;
+    private Vector3 _spawnPoint;
+    private int _counterSpawnedCoins = 0;
+
     void Start()
     {
         CounterMaxCoins();
 
-        for (int _countCoins = 1; _countCoins <= _maxCountAllCoins; _countCoins++)
-        {
-            SpawnCoins(_countCoins);
-        }
+        SpawnCoins();
     }
 
     private void CounterMaxCoins()
     {
         _maxCountBigCoins = _maxCountAllCoins - (_minCountBigCoins +
-                                                     (
-                                                     _maxCountAllCoins > 80 
-                                                     ? Random.Range(0, _maxCountAllCoins - (_minCountBigCoins+_minCountSmallCoins)) 
+                                                     (_maxCountAllCoins > 80 
+                                                     ? Random.Range(0, _maxCountAllCoins - (_minCountBigCoins + _minCountSmallCoins)) 
                                                      : 0
                                                      )
                                                  );
-        //_maxCountSmallCoins = _maxCountAllCoins - _maxCountBigCoins;
+        _maxCountSmallCoins = _maxCountAllCoins - _maxCountBigCoins;
     }
 
-    private void SpawnCoins(int _countCoins)
+    private void SpawnCoins()
     {
-        if (_countCoins <= _maxCountBigCoins)
+        for (int _countCoins = 1; _countCoins <= _maxCountAllCoins; _countCoins++)
         {
-            _bigCoinList.Add(Instantiate(
+            SpawnOneCoin();
+        }
+    }
+
+    private void SpawnOneCoin()
+    {
+        if (_counterSpawnedCoins <= _maxCountBigCoins)
+        {
+            Instantiate(
                 _bigCoin, 
-                ApproveDistanceBigCoin(_bigCoinList), 
+                ApproveDistance(_distanceBetweenCoins, _distanceToBarriers), 
                 Quaternion.identity, 
-                _bigCoinTransform)
-            );
+                _bigCoinTransform);
+            
+            _counterSpawnedCoins += 1;
         }
-        else
+        else if (_counterSpawnedCoins <= _maxCountAllCoins)
         {
-            /*_smallCoinList.Add(Instantiate(
+            Instantiate(
                 _smallCoin, 
-                ApproveDistanceSmallCoin(_bigCoinList, _smallCoinList), 
+                ApproveDistance(_distanceBetweenCoins, _distanceToBarriers), 
                 Quaternion.identity, 
-                _smallCoinTransform)
-            );*/
+                _smallCoinTransform);
+            
+            _counterSpawnedCoins += 1;
         }
     }
 
-    private Vector3 ApproveDistanceBigCoin(List<GameObject> coinList)
+    private Vector3 ApproveDistance(float distanceCoins, float distanceBarriers)
     {
-        const int distanceBetweenCoins = 7; //Увеличение дистанции без увеличения радиуса спавна ломает Unity
-        
         _spawnPoint = Random.insideUnitCircle * distance;
-        
-        for (int i = 0; i < coinList.Count; i++)
+
+        for (int i = 0; i < 5; i++)
         {
-            if (Vector3.Distance(_spawnPoint, coinList[i].transform.position) <= distanceBetweenCoins 
-                )
+            if (Physics2D.OverlapCircle(_spawnPoint, distanceCoins) != null 
+                || Physics2D.OverlapCircle(_spawnPoint, distanceBarriers) != null)
             {
                 _spawnPoint = Random.insideUnitCircle * distance;
                 i = 0;
             }
         }
-        
+
         return _spawnPoint;
-    }
-
-    private Vector3 ApproveDistanceSmallCoin(List<GameObject> bigCoinList, List<GameObject> smallCoinList)
-    {
-        const int distanceBetweenCoins = 7; //Увеличение дистанции без увеличения радиуса спавна ломает Unity
-        
-        _spawnPoint = ApproveDistanceBigCoin(bigCoinList);
-        
-        for (int counterSmallCoin = 0; counterSmallCoin < smallCoinList.Count; counterSmallCoin++)
-        {
-            if (Vector3.Distance(_spawnPoint, smallCoinList[counterSmallCoin].transform.position) <= distanceBetweenCoins)
-            {
-                _spawnPoint = ApproveDistanceBigCoin(bigCoinList);
-
-                counterSmallCoin = 0;
-            }
-        }
-        
-        return _spawnPoint;
-    }
-
-    private bool CheckBarriersDistance(int i, List<GameObject> bigCoinList, List<GameObject> smallCoinList = null)
-    {
-        const int distanceBarricadeCoin = 3; // Дистанция до преграды
-
-        if (smallCoinList == null)
-        {
-            if (bigCoinList[i].GetComponent<Collider2D>().Distance(
-                    GameObject.FindGameObjectWithTag("Barriers").GetComponent<Collider2D>()).distance <= distanceBarricadeCoin
-            )
-            {
-                Debug.Log(bigCoinList[i].GetComponent<Collider2D>().Distance(
-                    GameObject.FindGameObjectWithTag("Barriers").GetComponent<Collider2D>()).distance);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        else
-        {
-            return true;
-        }
     }
 }
