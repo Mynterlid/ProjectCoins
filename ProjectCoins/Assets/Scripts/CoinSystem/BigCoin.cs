@@ -16,4 +16,14 @@ public class BigCoin : MonoBehaviour
             }
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        GameManager.Instance.ActivateEButton();
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        GameManager.Instance.DeactivateEButton();
+    }
 }

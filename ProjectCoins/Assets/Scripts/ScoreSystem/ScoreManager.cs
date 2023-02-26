@@ -19,11 +19,6 @@ public class ScoreManager : MonoBehaviour
         _counterScore = 0;
     }
 
-    private void Update()
-    {
-        
-    }
-
     public void AddScore(int countAdd)
     {
         this._counterScore += countAdd;
