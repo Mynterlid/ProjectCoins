@@ -158,8 +158,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.14585505, y: 0.8073999}
   m_AnchorMax: {x: 0.84900004, y: 0.96380055}
-  m_AnchoredPosition: {x: 2.667511, y: 0}
-  m_SizeDelta: {x: 0, y: -0.000015259}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0.000015258789, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &26817906
 MonoBehaviour:
@@ -2119,7 +2119,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.17482185, y: 0.13700001}
   m_AnchorMax: {x: 0.809, y: 0.31852034}
-  m_AnchoredPosition: {x: -0.7799988, y: -1.7799988}
+  m_AnchoredPosition: {x: -0.7799988, y: -1.7799683}
   m_SizeDelta: {x: 4.8099976, y: -3.5599976}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1007516434
@@ -2269,7 +2269,6 @@ GameObject:
   - component: {fileID: 1064418864}
   - component: {fileID: 1064418863}
   - component: {fileID: 1064418862}
-  - component: {fileID: 1064418865}
   m_Layer: 5
   m_Name: PanelPause
   m_TagString: Untagged
@@ -2336,18 +2335,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1064418865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1064418861}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a9b5783840918d4284922127a29f225, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1081806227
 GameObject:
   m_ObjectHideFlags: 0
@@ -2713,6 +2700,7 @@ GameObject:
   - component: {fileID: 1199825163}
   - component: {fileID: 1199825165}
   - component: {fileID: 1199825164}
+  - component: {fileID: 1199825166}
   m_Layer: 5
   m_Name: PauseMenu
   m_TagString: Untagged
@@ -2782,6 +2770,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1199825162}
   m_CullTransparentMesh: 1
+--- !u!114 &1199825166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199825162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a9b5783840918d4284922127a29f225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1608004748
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -27,6 +29,25 @@ public class GameManager : MonoBehaviour
     public void DeactivateEButton()
     {
         _buttonE.SetActive(false);
+    }
+
+    public void SettingsScene()
+    {
+        
+    }
+    
+    public void MenuScene()
+    {
+        
+    }
+    
+    public void RestartScene()
+    {
+        
+    }
+    public void ExitGame()
+    {
+        
     }
 
     private void CheckInput()
