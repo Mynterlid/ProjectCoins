@@ -33,21 +33,21 @@ public class GameManager : MonoBehaviour
 
     public void SettingsScene()
     {
-        
+        SceneManager.LoadScene("SettingsScene");
     }
     
     public void MenuScene()
     {
-        
+        SceneManager.LoadScene("MenuScene");
     }
     
     public void RestartScene()
     {
-        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void ExitGame()
     {
-        
+        Application.Quit();
     }
 
     private void CheckInput()
