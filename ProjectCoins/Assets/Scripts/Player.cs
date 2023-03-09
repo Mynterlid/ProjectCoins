@@ -15,8 +15,6 @@ public class Player : MonoBehaviour
     private void Start()
     {
         _playerRenderer = gameObject.GetComponent<SpriteRenderer>();
-        
-
     }
     
     private void FixedUpdate()
