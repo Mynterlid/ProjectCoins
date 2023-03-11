@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     private SpriteRenderer _playerRenderer;
     private int _widthScreen;
     private int _heightScreen;
-    
+
     private void Start()
     {
         _playerRenderer = gameObject.GetComponent<SpriteRenderer>();
@@ -20,6 +20,8 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         MovePlayer();
+
+        Debug.Log(gameObject.GetComponent<Rigidbody2D>().velocity.sqrMagnitude);
     }
 
     private void MovePlayer()
@@ -40,14 +42,14 @@ public class Player : MonoBehaviour
         {
             transform.position = Vector2.Lerp(transform.position, 
                                             Camera.main.ScreenToWorldPoint(Input.mousePosition),  
-                                            Time.deltaTime);
+                                            _speed / 100);
             _playerRenderer.flipX = true;
         }
         else if (Input.mousePosition.x > middleWidthScreen)
         {
             transform.position = Vector2.Lerp(transform.position, 
                                             Camera.main.ScreenToWorldPoint(Input.mousePosition),  
-                                            Time.deltaTime);
+                                            _speed / 100);
             _playerRenderer.flipX = false;
         }
     }
