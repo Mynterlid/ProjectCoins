@@ -1,18 +1,39 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
+using Button = UnityEngine.UI.Button;
 
 public class MenuManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject _moveSettingsPopup;
+
+    public void GameScene()
     {
-        
+        if (PlayerPrefs.GetString("MoveSettings") == "")
+        {
+            _moveSettingsPopup.SetActive(true);
+        }
+        else
+        {
+            SceneManager.LoadScene("GameScene");
+        }
+    }
+    
+    public void SettingsScene()
+    {
+        SceneManager.LoadScene("SettingsScene");
+    }
+    
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ActivateToGameButton()
     {
-        
+        GameObject.Find("ButtonToGame").GetComponent<Button>().interactable = true;
     }
 }
