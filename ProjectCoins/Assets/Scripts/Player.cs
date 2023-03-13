@@ -26,12 +26,27 @@ public class Player : MonoBehaviour
 
     private void MovePlayer()
     {
-        if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
+        switch (PlayerPrefs.GetString("MoveSettings"))
         {
-            MouseMove();
-        }
+            case "Keyboard": KeyboardMove();
+                break;
+                
+            case "MouseAndKeyboard": 
+                if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
+                {
+                    MouseMove();
+                }
 
-        KeyboardMove();
+                KeyboardMove();
+                break;
+            
+            case "Mouse": 
+                if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
+                {
+                    MouseMove();
+                };
+                break;
+        }
     }
 
     private void MouseMove()
