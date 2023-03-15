@@ -16,8 +16,6 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         MovePlayer();
-
-        Debug.Log(gameObject.GetComponent<Rigidbody2D>().velocity.sqrMagnitude);
     }
 
     private void MovePlayer()
