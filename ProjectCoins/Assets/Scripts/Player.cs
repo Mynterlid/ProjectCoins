@@ -1,3 +1,4 @@
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -38,7 +39,7 @@ public class Player : MonoBehaviour
                 if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
                 {
                     MouseMove();
-                };
+                }
                 break;
         }
     }
@@ -47,22 +48,36 @@ public class Player : MonoBehaviour
     {
         int middleWidthScreen = Screen.width / 2;
 
+        Vector2 LerpPostion = Vector2.Lerp(transform.position,
+            MousePointPosition(),
+                Time.deltaTime);
+
         if (Input.mousePosition.x <= middleWidthScreen)
         {
-            transform.position = Vector2.Lerp(transform.position, 
-                                            Camera.main.ScreenToWorldPoint(Input.mousePosition),  
-                                            _speed / 100);
+            transform.position = LerpPostion;
             _playerRenderer.flipX = true;
         }
         else if (Input.mousePosition.x > middleWidthScreen)
         {
-            transform.position = Vector2.Lerp(transform.position, 
-                                            Camera.main.ScreenToWorldPoint(Input.mousePosition),  
-                                            _speed / 100);
+            transform.position = LerpPostion;
             _playerRenderer.flipX = false;
         }
     }
 
+    private Vector2 MousePointPosition()
+    {
+        Vector2 MousePoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        
+        float totalVectorSpeed = math.sqrt(
+            math.pow(MousePoint.x - transform.position.x, 2) 
+            + math.pow(MousePoint.y - transform.position.y, 2));
+        
+        MousePoint = Vector2.Lerp(transform.position, MousePoint, _speed / totalVectorSpeed);
+        
+        return MousePoint;
+    }
+    
+    
     private void KeyboardMove()
     {
         if (Input.GetKey(KeyCode.W))
