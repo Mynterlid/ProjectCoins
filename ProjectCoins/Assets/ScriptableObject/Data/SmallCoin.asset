@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3583ed0d797fb4940b371d594739efbb, type: 3}
   m_Name: SmallCoin
   m_EditorClassIdentifier: 
-  Name: Item
-  Icon: {fileID: 0}
-  StackCounter: 0
+  Name: SmallCoin
+  Icon: {fileID: 21300000, guid: 7a4e2a16a00a6d645b159d4890bfc3a4, type: 3}
+  Count: 0
