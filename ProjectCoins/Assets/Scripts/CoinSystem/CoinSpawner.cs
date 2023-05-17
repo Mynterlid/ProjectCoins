@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using JetBrains.Annotations;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class CoinSpawner : MonoBehaviour
@@ -33,12 +29,10 @@ public class CoinSpawner : MonoBehaviour
 
     private void CounterMaxCoins()
     {
-        _maxCountBigCoins = _maxCountAllCoins - (_minCountBigCoins +
-                                                     (_maxCountAllCoins > 80 
-                                                     ? Random.Range(0, _maxCountAllCoins - (_minCountBigCoins + _minCountSmallCoins)) 
-                                                     : 0
-                                                     )
-                                                 );
+        _maxCountBigCoins = _maxCountAllCoins - (_minCountBigCoins + 
+                            (_maxCountAllCoins > 80 
+                            ? Random.Range(0, _maxCountAllCoins 
+                            - (_minCountBigCoins + _minCountSmallCoins)) : 0));
         _maxCountSmallCoins = _maxCountAllCoins - _maxCountBigCoins;
     }
 

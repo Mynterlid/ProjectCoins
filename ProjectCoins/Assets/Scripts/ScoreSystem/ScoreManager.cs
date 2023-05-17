@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
@@ -19,11 +15,6 @@ public class ScoreManager : MonoBehaviour
         _counterScore = 0;
     }
 
-    private void Update()
-    {
-        
-    }
-
     public void AddScore(int countAdd)
     {
         this._counterScore += countAdd;
@@ -34,7 +25,6 @@ public class ScoreManager : MonoBehaviour
 
     private void ClearScore()
     {
-        this._counterScore = 0;
         _scoreText.text = this._counterScore.ToString();
     }
 
