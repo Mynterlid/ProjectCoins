@@ -22,9 +22,6 @@
 # Visual Studio cache directory
 .vs/
 
-#.idea directory
-NamelessHeroes/.idea
-
 # Gradle cache directory
 .gradle/
 
@@ -63,8 +60,6 @@ sysinfo.txt
 crashlytics-build.properties
 UnityProject/UserSettings/EditorUserSettings.asset
 UnityProject/UserSettings/EditorUserSettings.asset
-NamelessHeroes/ProjectSettings/EditorBuildSettings.asset
-NamelessHeroes/ProjectSettings/ProjectSettings.asset
 
 # Unused imports
 NamelessHeroes/Assets/Imports/Ignored/
